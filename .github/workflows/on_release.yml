@@ -1,14 +1,12 @@
-name: test
+name: on_release
 
-on:
-  release:
-    types: [created]
+on: release
 
 env:
   CI: true
 
 jobs:
-  test:
+  on_release:
     timeout-minutes: 15
     name: 'main'
     runs-on: ubuntu-latest
