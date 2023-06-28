@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+env:
+  CI: true
+    timeout-minutes: 15
+    name: 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 1618
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+      
+      - name: 'Version and Publish'
+        # if: ${{ endsWith(github.ref, '/main') }}
+        uses: changesets/action@v1
+        with:
+          # Creates/updates release PR if pending changesets
+          # version: pnpm libraries:version
+          commit: '/libraries/* release'
+          title: '`/libraries/*` release'      
