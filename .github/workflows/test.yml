@@ -1,11 +1,6 @@
 name: test
 
-# on: [pull_request,  workflow_call]
-on:
-  workflow_run:
-    workflows: ['Release']
-    types:
-      - completed
+on: [create]
 
 env:
   CI: true
