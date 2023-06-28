@@ -36,4 +36,4 @@ jobs:
 
       - name: Debug Release
         run: |
-          echo "pull request number: ${{needs.job1.changesets_action.pullRequestNumber}}"
+          echo "pull request number: ${{needs.release.changesets_action.pullRequestNumber}}"
