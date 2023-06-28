@@ -1,0 +1,16 @@
+name: test
+
+# on: [pull_request,  workflow_call]
+
+env:
+  CI: true
+
+jobs:
+  test:
+    timeout-minutes: 15
+    name: 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'test test'
+        run: |
+          echo "test test"
