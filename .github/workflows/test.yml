@@ -1,6 +1,8 @@
 name: test
 
-on: [create]
+on:
+  release:
+    types: [created]
 
 env:
   CI: true
