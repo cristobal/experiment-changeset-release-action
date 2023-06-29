@@ -13,6 +13,8 @@ on:
 env:
   CI: true
 
+permissions: read-all|write-all
+
 jobs:
   main:
     # if: github.event.type == 'PullRequest' && github.event.action != 'labeled' || github.event.type == 'PullRequest' && github.event.action == 'labeled' && github.event.label.name == 'release'
