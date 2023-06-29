@@ -1,13 +1,13 @@
 name: main
 
-on: workflow_call
-  # pull_request_target:
-  #   types:
-  #     - opened
-  #     - edited
-  #     - synchronize
-  #     - reopened
-  # workflow_call: {}
+on:
+  pull_request:
+    types:
+      - labeled
+      - opened
+      - edited
+      - synchronize
+      - reopened
 
 env:
   CI: true
@@ -19,4 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'hello world'
-        run: 'echo hello world'
+        run: | 
+          echo "hello world"
+          echo "${{ github.event.type }}"
+          echo "${{ github.event.label.name }}"
+
