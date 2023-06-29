@@ -37,9 +37,8 @@ jobs:
       - name: Add label
         if: steps.changesets.outputs.hasChangesets == 'true'
         run: |
-          sleep 1
           gh pr edit $PR --remove-label "$LABEL"
-          sleep 1
+          sleep 3
           gh pr edit $PR --add-label "$LABEL"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
