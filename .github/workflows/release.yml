@@ -36,7 +36,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Add label
         run: |
-          gh pr edit ${{ steps.changesets.outputs.pullRequestNumber }} --add-label "release"
-          gh pr view ${{ steps.changesets.outputs.pullRequestNumber }} --json labels
+          if [ "$(gh pr view $PR --json labels --jq '.labels[] | select(.name == $LABEL) | .name')" = "${LABEL}" ]; then
+            echo "remove existing label to re-trigger"
+            gh pr edit $PR --remove-label $LABEL
+            sleep 3
+          fi
+          echo "add label"
+          gh pr edit $PR --add-label $LABEL
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LABEL: release
+          PR: ${{ steps.changesets.outputs.pullRequestNumber }}
