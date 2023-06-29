@@ -1,23 +1,12 @@
 name: main
 
-on:
-  pull_request:
-    types:
-      # default types @see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
-      - opened
-      - synchronize
-      - reopened
-      # manually added release label
-      - labeled
+on: pull_request
 
 env:
   CI: true
 
-permissions: read-all|write-all
-
 jobs:
   main:
-    # if: github.event.type == 'PullRequest' && github.event.action != 'labeled' || github.event.type == 'PullRequest' && github.event.action == 'labeled' && github.event.label.name == 'release'
     timeout-minutes: 15
     name: 'main'
     runs-on: ubuntu-latest
