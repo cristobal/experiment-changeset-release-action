@@ -34,7 +34,8 @@ jobs:
           title: '`/libraries/*` release'     
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+  main:
+    uses: cristobal/experiment-changeset-release-action/.github/workflows/main.yml@changeset-release/main
       # - name: Run Workflow
       #   run: |
       #     gh workflow run main.yml --ref "changeset-release/main"

@@ -1,10 +1,6 @@
 name: main
 
-on:
-  workflow_run:
-    workflows: [Release]
-    # types: [requested]
-    branches: [changeset-release/main]
+on: [workflow_call, pull_request]
 
 env:
   CI: true
