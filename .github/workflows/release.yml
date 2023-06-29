@@ -38,8 +38,7 @@ jobs:
         env:
           output1: ${{needs.release.changesets_action.pullRequestNumber}}"
           output2: ${{needs.changesets_action.pullRequestNumber}}"
-          output3: ${{changesets_action.pullRequestNumber}}"   
+          # output3: ${{changesets_action.pullRequestNumber}}"   
         run: |
           echo "pull request number: ${output1}"
           echo "pull request number: ${output2}"
-          echo "pull request number: ${output3}"
