@@ -15,7 +15,7 @@ env:
 
 jobs:
   main:
-    if: github.event.action != 'labeled' || github.event.action == 'labeled' && github.event.label.name == 'release'
+    if: github.event.type == 'PullRequest' && github.event.action != 'labeled' || github.event.type == 'PullRequest' && github.event.action == 'labeled' && github.event.label.name == 'release'
     timeout-minutes: 15
     name: 'main'
     runs-on: ubuntu-latest
