@@ -24,22 +24,21 @@ jobs:
         run: npm ci
 
       - name: Create Release Pull Request
-        id: changesets_action
+        id: changesets
         uses: changesets/action@v1
         with:
           # Creates/updates release PR if pending changesets
           # version: pnpm libraries:version
+          # echo "pull request number: ${{ steps.changesets.outputs.pullRequestNumber }}"
           commit: '/libraries/* release'
           title: '`/libraries/*` release'     
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Debug Release
-        env:
-          output1: ${{needs.release.changesets_action.pullRequestNumber}}"
-          output2: ${{needs.changesets_action.pullRequestNumber}}"
-          output3: ${{release.changesets_action.pullRequestNumber}}"   
+      - name: Run Workflow
         run: |
-          echo "pull request number: ${output1}"
-          echo "pull request number: ${output2}"
-          echo "pull request number: ${output3}"
+          echo "MY_TOKEN=${{ secrets.MY_TOKEN }}"
+          echo "GH_TOKEN=$GH_TOKEN"
+          gh workflow run main.yml --ref "changeset-release/main"
+        env:
+          GH_TOKEN: ${{ secrets.MY_SECRET }}
