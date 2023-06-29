@@ -3,7 +3,7 @@ name: main
 on:
   workflow_run:
     workflows: [Release]
-    types: [requested]
+    # types: [requested]
     branches: [changeset-release/main]
 
 env:

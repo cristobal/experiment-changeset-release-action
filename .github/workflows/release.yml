@@ -35,8 +35,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run Workflow
-        run: |
-          gh workflow run main.yml --ref "changeset-release/main"
-        env:
-          GH_TOKEN: ${{ secrets.MY_SECRET }}
+      # - name: Run Workflow
+      #   run: |
+      #     gh workflow run main.yml --ref "changeset-release/main"
+      #   env:
+      #     GH_TOKEN: ${{ secrets.MY_SECRET }}
