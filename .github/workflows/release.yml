@@ -37,8 +37,6 @@ jobs:
 
       - name: Run Workflow
         run: |
-          echo "MY_TOKEN=${{ secrets.MY_TOKEN }}"
-          echo "GH_TOKEN=$GH_TOKEN"
           gh workflow run main.yml --ref "changeset-release/main"
         env:
           GH_TOKEN: ${{ secrets.MY_SECRET }}
